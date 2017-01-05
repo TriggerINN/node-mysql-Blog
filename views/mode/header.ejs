@@ -1,0 +1,29 @@
+<header class="header-area">
+    <div class="header-logo">
+        <h1 class="l"><a href="/">无虑 Blog</a></h1>
+        <!-- 导航 -->
+        <nav class="nav">
+            <ul>
+                <li><a href="/blog?nav=index">我的博客</a></li>
+                <li><a href="/blog?nav=node">nodeJs</a></li>
+            </ul>
+        </nav>
+        <!-- 用户登录 -->
+        <div class="header-right r">
+            <% if(locals.islogin){ %>
+            欢迎，<%= locals.islogin %>&nbsp;&nbsp;
+                <% if(locals.isAdmin == "管理员"){ %>
+                    <%= locals.isAdmin %>&nbsp;&nbsp;<a href="/admin">后台管理</a>
+                <% }else { %>
+                    <%= locals.isAdmin %>
+                <% } %>
+                <a href="/logout">退出</a>
+            <% } else { %>
+                <a href="/login">登录</a>
+                <a href="/reg">注册</a>
+            <% } %>
+        </div>
+    </div>
+</header>
+
+

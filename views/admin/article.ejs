@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="../js/admin.js"></script>
+</head>
+<body>
+<% include iframe/top %>
+<h1>待完善</h1>
+<br />
+<br />
+<form method="post">
+    <p>添加文章</p>
+    标题：<input type="text" name="title">
+    内容：<textarea id="content" name="content"></textarea><input id="min" value="" type="text" name="min" style="display: none;">
+    标签：<select name="tag">
+        <option value="">无</option>
+        <option value="node">node</option>
+    </select>
+    <input type="submit" value="提交">
+</form>
+<script>
+    var content = document.getElementById("content");
+    var min = document.getElementById("min");
+    content.onkeyup = function (){
+        min.value = content.value.substring(0,150);
+        console.log(min.value);
+    }
+</script>
+<br />
+<br />
+<div>
+    <form method="post">
+        <p>文章列表</p>
+        <% for (var i in data){%>
+            标题:<%= data[i]['title'] %><br>
+            内容摘要:<%= data[i]['min'] %><br>
+            标签:<%= data[i]['tag'] %><br>
+        <input name="id" type="radio" value="<%= data[i]['id'] %>"><input type="submit" value="删除"><br>
+        <br />
+        <% } %>
+    </form>
+</div>
+</body>
+</html>

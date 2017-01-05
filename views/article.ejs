@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/css/style.css'/>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/blog.js"></script>
+</head>
+<body>
+<div class="index-warp">
+    <% include mode/header %>
+    <div class="article">
+        <div class="article-main" id="main-article">
+            <div class="article-header">
+                <!-- 面包屑导航 -->
+                <ul>
+                    <li><a href="/">首页</a></li> /
+                    <li><a href="/blog?nav=index">博客</a></li> /
+                    <li>文章</li>
+                </ul>
+                <h1 id="articletitle" data-id="<%= articleContent['id'] %>"><%= articleContent['title'] %></h1>
+            </div>
+            <div class="article-footer">
+                <div>发布时间: <%= articleContent['time'] %></div>
+                <div><i></i> <%= articleContent['tag'] %></div>
+            </div>
+            <div class="article-content">
+                <%= articleContent['content'] %>
+            </div>
+            <div data-num="<%= articleComment.length %>" id="article-comment" class="article-comment">
+                <div>评论</div>
+                <div class="pinglun">
+                    <input style="" type="text" id="comment" name="comment" placeholder="评论">
+                    <input id="articlesubmit" type="submit" class="sub" value="提交">
+                    姓名：<input type="text" id="name" name="name" placeholder="姓名">
+                    邮箱：<input name="email" id="email" type="text" placeholder="邮箱">
+                </div>
+                <% for(var x in articleComment){ %>
+                <div>
+                    <% if(locals.isAdmin == "管理员"){ %>
+                    <form method="post" style="position:relative;width:87%"><input style="display:none" checked="checked" type="radio" name="id" value="<%= articleComment[x]['id'] %>">
+                        <input type="submit" value="删除">
+                    </form>
+                    <% } %>
+                    用户：<%= articleComment[x]['commentname'] %>&nbsp;&nbsp;&nbsp;&nbsp;
+                    邮箱：<%= articleComment[x]['commentemail'] %><br>
+                    评论：<%= articleComment[x]['comment'] %><br><br>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <div class="article-label">
+            <div>
+                <h3>最新文章 Top5</h3>
+                <ul>
+                    <% for(var i in article){ %>
+                    <li><a href="/article?article=<%= article[i]['id'] %>"><%= article[i]['title'] %></a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

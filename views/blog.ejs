@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/css/style.css'/>
+    <script src="/js/blog.js"></script>
+</head>
+<body>
+<div class="index-warp">
+    <% include mode/header %>
+    <div class="myinfo">
+        <div class="myimg"><img src="" alt=""></div>
+        <div class="myname">
+            <p>无虑</p>
+            <p><i class="dingwei"></i> 湖南-长沙</p>
+            <p><i class="kafei"></i> 希望你做的一切都能立足于你的成长！</p>
+            <p>本博客使用 使用node.js + mysql <span style="color:red">待完善！</span></p>
+        </div>
+        <div class="mydes"></div>
+    </div>
+    <div class="main-article" id="main-article">
+        <!-- 从数据库获取 动态添加文章 -->
+        <% for (var i in articleData){%>
+        <article>
+            <div class="main-article-header">
+                <h2><a href="/article?article=<%= articleData[i]['id'] %>"><%= articleData[i]['title'] %></a></h2>
+                <div class="main-article-content">
+                    <%= articleData[i]['min'] %>
+                </div>
+            </div>
+            <div class="main-article-footer">
+                <div>发布时间: <%= articleData[i]['time'] %></div>
+                <div>评论数: <%= articleData[i]['commentnum'] %></div>
+                <div><i></i> <%= articleData[i]['tag'] %></div>
+                <div class="readmore"><a href="/article?article=<%= articleData[i]['id'] %>">阅读全文</a></div>
+            </div>
+        </article>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

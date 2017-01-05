@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="../js/admin.js"></script>
+</head>
+<body>
+<% include iframe/top %>
+<h1>导航下的内容对应标签</h1>
+<% for(var x in nav){ %>
+导航标题：<%= nav[x]['Nav'] %><br>
+<% } %>
+</body>
+</html>

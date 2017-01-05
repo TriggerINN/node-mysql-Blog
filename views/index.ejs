@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='/css/style.css' />
+    <script src="js/jquery.js"></script>
+    <title><%= title %></title>
+</head>
+<body>
+<div class="index-warp">
+    <div class="index-header">
+        <h1>无虑Blog</h1>
+        <div class="index-header-txt" id="index-header-txt">
+            <h3 class="show">Hello <span>Node.Js</span></h3>
+            <h3>我是<span>无虑</span></h3>
+            <h3>不忘<span>初心</span> 方得<span class="blue">始终</span></h3>
+            <h3><span>坚持</span>才是捷径!</h3>
+            <h3>开始<span>行动</span>吧!</h3>
+        </div>
+        <div class="index-btn">
+            <a href="/blog?nav=index">我的博客</a>
+        </div>
+    </div>
+</div>
+<script>
+    var i = 1;
+    var h3 = $("#index-header-txt h3");
+    setInterval(function (){
+        if(i>=h3.length) i = 0;
+        h3.eq(i).addClass("show").siblings().removeClass("show");
+        i++;
+    },2000)
+</script>
+</body>
+</html>

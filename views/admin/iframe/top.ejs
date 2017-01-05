@@ -1,0 +1,15 @@
+<div class="t-box">
+    <div class="t-logo l">Blog管理系统</div>
+    <nav class="nav">
+        <ul>
+            <li><a href="/admin">管理首页</a></li>
+            <!--<li><a href="/admin/nav">导航管理</a></li>-->
+            <li><a href="/admin/article">文章管理</a></li>
+        </ul>
+    </nav>
+    <div class="t-right r">
+        <p class="l">你好，<%= locals.islogin %></p>
+        <p class="l"><a href="/blog?nav=index">返回首页</a></p>
+        <p class="l"><a href="/logout">退出</a></p>
+    </div>
+</div>
